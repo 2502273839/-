@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: u?;bKbyf4>F%
+    url: jdbc:mysql://127.0.0.1:3306/computerroommanagedb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+mybatis:
+  config-location: classpath:/mybatis-config.xml
+#  mapper-locations: com/example/demo/entity/xml/*/*Mapper.xml
