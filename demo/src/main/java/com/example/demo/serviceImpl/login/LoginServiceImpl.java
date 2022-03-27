@@ -1,9 +1,9 @@
-package com.example.demo.serviceImpl;
+package com.example.demo.serviceImpl.login;
 
 import com.example.demo.Util.StringUtils;
 import com.example.demo.Util.TokenPool;
 import com.example.demo.dao.UserServiceDAO;
-import com.example.demo.entity.User;
+import com.example.demo.entity.client.User;
 import com.example.demo.entity.UserDO;
 import com.example.demo.model.response.BaseResponse;
 import com.example.demo.model.response.LoginResponse;

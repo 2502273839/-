@@ -21,5 +21,6 @@
 <!--    </environments>-->
     <mappers>
         <mapper resource="xml/UserDOMapper.xml"></mapper>
+        <mapper resource="xml/ApplyTicketDOMapper.xml"></mapper>
     </mappers>
 </configuration>

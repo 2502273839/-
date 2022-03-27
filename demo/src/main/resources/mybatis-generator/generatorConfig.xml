@@ -7,11 +7,11 @@
     <classPathEntry
             location="C:\Users\25022\.m2\repository\mysql\mysql-connector-java\8.0.28\mysql-connector-java-8.0.28.jar"/>
     <context id="my" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
         <commentGenerator>
             <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/computerroommanagedb?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=false" userId="root"
                         password="u?;bKbyf4>F%"/>
@@ -37,13 +37,12 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="comp_user" domainObjectName="UserDO"
+        <table tableName="comp_applyticket" domainObjectName="ApplyTicketDO"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true" modelType="flat">
             <!--<columnRenamingRule searchString="^D_"
                                 replaceString=""/>-->
         </table>
-
     </context>
 </generatorConfiguration>

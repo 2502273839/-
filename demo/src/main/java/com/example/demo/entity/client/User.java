@@ -1,5 +1,6 @@
-package com.example.demo.entity;
+package com.example.demo.entity.client;
 
+import com.example.demo.entity.UserDO;
 import lombok.Data;
 
 
