@@ -28,4 +28,14 @@ public class UserServiceDAO {
         return userDO;
     }
 
+    public UserDO queryUserByName(String name) {
+        UserDOExample example = new UserDOExample();
+        example.createCriteria().andUsernameEqualTo(name);
+        List<UserDO> userDOS = userDOMapper.selectByExample(example);
+        if (userDOS.isEmpty()) {
+            return null;
+        }
+        return userDOS.get(0);
+    }
+
 }

@@ -176,7 +176,7 @@ java.lang.RuntimeException: Value for username cannot be null
 	at com.example.demo.entity.UserDOExample$GeneratedCriteria.andUsernameEqualTo(UserDOExample.java:178)
 	at com.example.demo.entity.UserDOExample$Criteria.andUsernameEqualTo(UserDOExample.java:438)
 	at com.example.demo.dao.UserServiceDAO.queryUserByNameAndPassword(UserServiceDAO.java:21)
-	at com.example.demo.serviceImpl.LoginServiceImpl.login(LoginServiceImpl.java:22)
+	at com.example.demo.serviceImpl.login.LoginServiceImpl.login(LoginServiceImpl.java:22)
 	at com.example.demo.controller.MainController.login(MainController.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -250,7 +250,7 @@ java.lang.RuntimeException: Value for username cannot be null
 	at com.example.demo.entity.UserDOExample$GeneratedCriteria.andUsernameEqualTo(UserDOExample.java:178)
 	at com.example.demo.entity.UserDOExample$Criteria.andUsernameEqualTo(UserDOExample.java:438)
 	at com.example.demo.dao.UserServiceDAO.queryUserByNameAndPassword(UserServiceDAO.java:21)
-	at com.example.demo.serviceImpl.LoginServiceImpl.login(LoginServiceImpl.java:22)
+	at com.example.demo.serviceImpl.login.LoginServiceImpl.login(LoginServiceImpl.java:22)
 	at com.example.demo.controller.MainController.login(MainController.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -445,9 +445,9 @@ Consider defining a bean of type 'com.example.demo.mapper.UserDOMapper' in your 
 17:22:40.486 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 17:22:40.486 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 17:22:40.487 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-17:22:40.558 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.example.demo.entity.User]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.demo.entity.User` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+17:22:40.558 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.example.demo.entity.client.User]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.demo.entity.client.User` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
  at [Source: (PushbackInputStream); line: 2, column: 5]] with root cause
-com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.demo.entity.User` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.demo.entity.client.User` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
  at [Source: (PushbackInputStream); line: 2, column: 5]
 	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
 	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1904)
@@ -532,7 +532,7 @@ java.lang.RuntimeException: Value for username cannot be null
 	at com.example.demo.entity.UserDOExample$GeneratedCriteria.andUsernameEqualTo(UserDOExample.java:178)
 	at com.example.demo.entity.UserDOExample$Criteria.andUsernameEqualTo(UserDOExample.java:508)
 	at com.example.demo.dao.UserServiceDAO.queryUserByNameAndPassword(UserServiceDAO.java:21)
-	at com.example.demo.serviceImpl.LoginServiceImpl.login(LoginServiceImpl.java:25)
+	at com.example.demo.serviceImpl.login.LoginServiceImpl.login(LoginServiceImpl.java:25)
 	at com.example.demo.controller.MainController.login(MainController.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)

@@ -47,6 +47,9 @@ public class User implements Serializable {
             this.roles = new ArrayList<>();
             roles.add("editor");
         }
+        if (userDO.getAvatar() != null) {
+            this.avatar = userDO.getAvatar();
+        }
 
     }
 }

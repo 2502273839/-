@@ -31,4 +31,11 @@ public class BaseResponse<T> implements Serializable {
         return response;
     }
 
+    public static <T> BaseResponse<T> returnFailData(String code, String message) {
+        BaseResponse<T> response = new BaseResponse<>(code, message, System.currentTimeMillis());
+        return response;
+    }
+
+
+
 }

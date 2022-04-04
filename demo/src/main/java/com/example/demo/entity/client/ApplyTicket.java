@@ -16,11 +16,11 @@ public class ApplyTicket implements Serializable {
 
     private String processorName;
 
-    private Date createTime;
+    private String createTime;
 
-    private Date startTime;
+    private String startTime;
 
-    private Date endTime;
+    private String endTime;
     /**
      * 状态： 0 - 待处理  1 - 同意  2 - 拒绝
      */

@@ -22,5 +22,7 @@
     <mappers>
         <mapper resource="xml/UserDOMapper.xml"></mapper>
         <mapper resource="xml/ApplyTicketDOMapper.xml"></mapper>
+        <mapper resource="xml/RoomDOMapper.xml"></mapper>
+        <mapper resource="xml/RoomUseDOMapper"></mapper>
     </mappers>
 </configuration>
