@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.request.ApplyRequest;
 import com.example.demo.model.request.DealApplicationRequest;
 import com.example.demo.model.request.QueryApplyTicketRequest;
 import com.example.demo.model.response.BaseResponse;
@@ -23,5 +24,10 @@ public class ApplyTicketController {
     @PostMapping("computer/applyticket/deal")
     public BaseResponse dealApplication(@RequestBody DealApplicationRequest request) {
         return applyTicketService.dealApplication(request);
+    }
+
+    @PostMapping("computer/applyticket/apply")
+    public BaseResponse apply(@RequestBody ApplyRequest request) {
+        return applyTicketService.doApply(request);
     }
 }

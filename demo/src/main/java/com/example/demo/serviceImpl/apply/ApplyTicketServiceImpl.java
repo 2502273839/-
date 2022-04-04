@@ -2,15 +2,21 @@ package com.example.demo.serviceImpl.apply;
 
 import com.example.demo.Util.DateUtil;
 import com.example.demo.dao.ApplyTicketServiceDAO;
+import com.example.demo.dao.RoomServiceDAO;
 import com.example.demo.dao.UserServiceDAO;
 import com.example.demo.entity.ApplyTicketDO;
+import com.example.demo.entity.RoomUseDO;
 import com.example.demo.entity.UserDO;
 import com.example.demo.entity.client.ApplyTicket;
+import com.example.demo.model.ErrorCode;
+import com.example.demo.model.request.ApplyRequest;
 import com.example.demo.model.request.DealApplicationRequest;
 import com.example.demo.model.request.QueryApplyTicketRequest;
 import com.example.demo.model.response.BaseResponse;
 import com.example.demo.model.response.QueryApplyTicketResponse;
 import com.example.demo.service.apply.ApplyTicketService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,12 +26,16 @@ import java.util.List;
 
 @Service
 public class ApplyTicketServiceImpl implements ApplyTicketService {
+    private static final Logger logger = LoggerFactory.getLogger(ApplyTicketServiceImpl.class);
 
     @Resource
     ApplyTicketServiceDAO applyTicketServiceDAO;
 
     @Resource
     UserServiceDAO userServiceDAO;
+
+    @Resource
+    RoomServiceDAO roomServiceDAO;
 
     @Override
     public BaseResponse<QueryApplyTicketResponse> queryAllApplyTickets(int pageIndex, int pageSize) {
@@ -54,6 +64,38 @@ public class ApplyTicketServiceImpl implements ApplyTicketService {
         return BaseResponse.returnSuccessData(applyTicketServiceDAO.update(applyTicketDO));
     }
 
+    @Override
+    public BaseResponse<Boolean> doApply(ApplyRequest request) {
+
+        try {
+            if (checkConflict(request.getStart(), request.getEnd(), request.getRoomId())) {
+                return BaseResponse.returnSuccessData(false);
+            }
+            if (request.getApplicant() == null || request.getApplicant().isEmpty()) {
+                return BaseResponse.returnSuccessData(false);
+            }
+            UserDO userDO = userServiceDAO.queryUserByName(request.getApplicant());
+            if (userDO == null || userDO.getType() != 0) {
+                return BaseResponse.returnSuccessData(false);
+            }
+            ApplyTicketDO applyTicketDO = new ApplyTicketDO();
+            applyTicketDO.setApplicant(userDO.getUsername());
+            applyTicketDO.setApplicantid(userDO.getUserid());
+            applyTicketDO.setStatus(0);
+            applyTicketDO.setCreatetime(new Date());
+            applyTicketDO.setStarttime(request.getStart());
+            applyTicketDO.setEndtime(request.getEnd());
+            applyTicketDO.setRoomid(request.getRoomId());
+            applyTicketDO.setRoomname(request.getRoom());
+            applyTicketDO.setApplyreason(request.getApplyReason());
+            applyTicketServiceDAO.insertApplyTicket(applyTicketDO);
+            return BaseResponse.returnSuccessData(true);
+        } catch (Exception e) {
+            logger.error("do apply error", e);
+            return BaseResponse.returnFailData(ErrorCode.SYSTEM_ERROR.getCode(), ErrorCode.SYSTEM_ERROR.getMessage());
+        }
+    }
+
     private List<ApplyTicket> transformApplyTicket(List<ApplyTicketDO> applyTicketDOS) {
         List<ApplyTicket> applyTickets = new ArrayList<>();
         for (ApplyTicketDO applyTicketDO : applyTicketDOS) {
@@ -78,5 +120,18 @@ public class ApplyTicketServiceImpl implements ApplyTicketService {
             applyTickets.add(applyTicket);
         }
         return applyTickets;
+    }
+
+    public boolean checkConflict(Date start, Date end, Integer roomId) {
+        List<RoomUseDO> roomUseDOS = roomServiceDAO.queryRoomUseById(roomId);
+        String day = DateUtil.parseDateByDay(start);
+        for (RoomUseDO roomUseDO : roomUseDOS) {
+            if (roomUseDO.getDay().equals(day)) {
+                if (!(start.after(roomUseDO.getEnd()) || end.before(roomUseDO.getStart()))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

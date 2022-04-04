@@ -33,4 +33,8 @@ public class ApplyTicketServiceDAO {
         int i = applyTicketDOMapper.updateByPrimaryKeySelective(applyTicketDO);
         return i == 1;
     }
+
+    public boolean insertApplyTicket(ApplyTicketDO applyTicketDO) {
+        return applyTicketDOMapper.insert(applyTicketDO) == 1;
+    }
 }
