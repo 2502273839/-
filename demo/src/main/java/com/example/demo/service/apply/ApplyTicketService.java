@@ -10,9 +10,13 @@ import com.example.demo.model.response.QueryApplyTicketResponse;
 import java.util.List;
 
 public interface ApplyTicketService {
-    public BaseResponse<QueryApplyTicketResponse> queryAllApplyTickets(int pageIndex, int pageSize);
+    public BaseResponse<QueryApplyTicketResponse> queryAllApplyTickets(QueryApplyTicketRequest request);
 
     public BaseResponse<Boolean> dealApplication(DealApplicationRequest request);
 
     public BaseResponse<Boolean> doApply(ApplyRequest request);
+
+    public BaseResponse<QueryApplyTicketResponse> queryApplyTicketsByApplicant(int pageIndex, int pageSize, String applicant);
+
+    public BaseResponse<Boolean> cancelApply(DealApplicationRequest request);
 }

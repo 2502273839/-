@@ -11,11 +11,19 @@ public class ApplyRequest implements Serializable {
 
     String room;
 
-    Date start;
+    String start;
 
-    Date end;
+    String end;
+
+    Date day;
 
     String applicant;
 
-    String applyReason;
+    String teacher;
+
+    String lesson;
+
+    String classHour;
+
+    String content;
 }

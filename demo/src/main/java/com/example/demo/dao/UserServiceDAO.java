@@ -38,4 +38,11 @@ public class UserServiceDAO {
         return userDOS.get(0);
     }
 
+    public List<UserDO> queryAllTeacher() {
+        UserDOExample example = new UserDOExample();
+        example.createCriteria().andTypeEqualTo(0);
+        List<UserDO> userDOS = userDOMapper.selectByExample(example);
+        return userDOS;
+    }
+
 }

@@ -41,4 +41,9 @@ public class RoomServiceDAO {
         return roomDOS;
     }
 
+    public boolean insertRoomUse(RoomUseDO roomUseDO) {
+        int insert = roomUseDOMapper.insert(roomUseDO);
+        return insert == 1;
+    }
+
 }

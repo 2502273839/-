@@ -37,7 +37,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="comp_room_use" domainObjectName="RoomUseDO"
+        <table tableName="comp_user_data" domainObjectName="UserDataDO"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true" modelType="flat">

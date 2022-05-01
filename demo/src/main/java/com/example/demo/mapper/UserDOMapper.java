@@ -3,9 +3,8 @@ package com.example.demo.mapper;
 import com.example.demo.entity.UserDO;
 import com.example.demo.entity.UserDOExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface UserDOMapper {
     int countByExample(UserDOExample example);
@@ -17,6 +16,8 @@ public interface UserDOMapper {
     int insert(UserDO record);
 
     int insertSelective(UserDO record);
+
+    List<UserDO> selectByExampleWithRowbounds(UserDOExample example, RowBounds rowBounds);
 
     List<UserDO> selectByExample(UserDOExample example);
 

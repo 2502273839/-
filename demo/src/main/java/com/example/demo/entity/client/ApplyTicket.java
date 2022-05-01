@@ -12,9 +12,9 @@ public class ApplyTicket implements Serializable {
 
     private String applicantName;
 
-    private String roomName;
+    private String teacher;
 
-    private String processorName;
+    private String roomName;
 
     private String createTime;
 
@@ -22,12 +22,13 @@ public class ApplyTicket implements Serializable {
 
     private String endTime;
     /**
-     * 状态： 0 - 待处理  1 - 同意  2 - 拒绝
+     * 状态： 0 - 待处理  1 - 同意  2 - 拒绝  3-已撤销 4 - 已确认
      */
     private String status;
 
-    private String applyReason;
+    private String lesson;
 
-    private String refuseReason;
+    private String content;
 
+    private String classHour;
 }

@@ -5,33 +5,37 @@ import java.util.Date;
 public class ApplyTicketDO {
     private Integer id;
 
-    private Integer applicantid;
+    private Integer applicantId;
 
     private String applicant;
 
-    private Date starttime;
+    private Date startTime;
 
-    private Date endtime;
+    private Date endTime;
 
-    private Integer roomid;
+    private Integer roomId;
 
-    private String roomname;
+    private String roomName;
 
     private Integer status;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date addresstime;
+    private Date addressTime;
 
-    private Date modifiedtime;
+    private Date modifiedTime;
 
-    private Integer processorid;
+    private Integer processorId;
 
-    private String processorname;
+    private String processorName;
 
-    private String applyreason;
+    private String teacher;
 
-    private String refusereason;
+    private String lesson;
+
+    private String classHour;
+
+    private String content;
 
     public Integer getId() {
         return id;
@@ -41,12 +45,12 @@ public class ApplyTicketDO {
         this.id = id;
     }
 
-    public Integer getApplicantid() {
-        return applicantid;
+    public Integer getApplicantId() {
+        return applicantId;
     }
 
-    public void setApplicantid(Integer applicantid) {
-        this.applicantid = applicantid;
+    public void setApplicantId(Integer applicantId) {
+        this.applicantId = applicantId;
     }
 
     public String getApplicant() {
@@ -57,36 +61,36 @@ public class ApplyTicketDO {
         this.applicant = applicant == null ? null : applicant.trim();
     }
 
-    public Date getStarttime() {
-        return starttime;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setStarttime(Date starttime) {
-        this.starttime = starttime;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getEndtime() {
-        return endtime;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
-    public Integer getRoomid() {
-        return roomid;
+    public Integer getRoomId() {
+        return roomId;
     }
 
-    public void setRoomid(Integer roomid) {
-        this.roomid = roomid;
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
     }
 
-    public String getRoomname() {
-        return roomname;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setRoomname(String roomname) {
-        this.roomname = roomname == null ? null : roomname.trim();
+    public void setRoomName(String roomName) {
+        this.roomName = roomName == null ? null : roomName.trim();
     }
 
     public Integer getStatus() {
@@ -97,59 +101,75 @@ public class ApplyTicketDO {
         this.status = status;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getAddresstime() {
-        return addresstime;
+    public Date getAddressTime() {
+        return addressTime;
     }
 
-    public void setAddresstime(Date addresstime) {
-        this.addresstime = addresstime;
+    public void setAddressTime(Date addressTime) {
+        this.addressTime = addressTime;
     }
 
-    public Date getModifiedtime() {
-        return modifiedtime;
+    public Date getModifiedTime() {
+        return modifiedTime;
     }
 
-    public void setModifiedtime(Date modifiedtime) {
-        this.modifiedtime = modifiedtime;
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
     }
 
-    public Integer getProcessorid() {
-        return processorid;
+    public Integer getProcessorId() {
+        return processorId;
     }
 
-    public void setProcessorid(Integer processorid) {
-        this.processorid = processorid;
+    public void setProcessorId(Integer processorId) {
+        this.processorId = processorId;
     }
 
-    public String getProcessorname() {
-        return processorname;
+    public String getProcessorName() {
+        return processorName;
     }
 
-    public void setProcessorname(String processorname) {
-        this.processorname = processorname == null ? null : processorname.trim();
+    public void setProcessorName(String processorName) {
+        this.processorName = processorName == null ? null : processorName.trim();
     }
 
-    public String getApplyreason() {
-        return applyreason;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public void setApplyreason(String applyreason) {
-        this.applyreason = applyreason == null ? null : applyreason.trim();
+    public void setTeacher(String teacher) {
+        this.teacher = teacher == null ? null : teacher.trim();
     }
 
-    public String getRefusereason() {
-        return refusereason;
+    public String getLesson() {
+        return lesson;
     }
 
-    public void setRefusereason(String refusereason) {
-        this.refusereason = refusereason == null ? null : refusereason.trim();
+    public void setLesson(String lesson) {
+        this.lesson = lesson == null ? null : lesson.trim();
+    }
+
+    public String getClassHour() {
+        return classHour;
+    }
+
+    public void setClassHour(String classHour) {
+        this.classHour = classHour == null ? null : classHour.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }

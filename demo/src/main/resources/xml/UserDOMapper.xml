@@ -8,6 +8,7 @@
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    userId, username, password, type, phone, avatar
+    userId, username, password, type, phone, avatar, email
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.entity.UserDOExample" >
     select
@@ -103,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.example.demo.entity.UserDO" >
     insert into comp_user (userId, username, password, 
-      type, phone, avatar
-      )
+      type, phone, avatar, 
+      email)
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{type,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}
-      )
+      #{type,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.entity.UserDO" >
     insert into comp_user
@@ -130,6 +131,9 @@
       <if test="avatar != null" >
         avatar,
       </if>
+      <if test="email != null" >
+        email,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
@@ -149,6 +153,9 @@
       </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -179,6 +186,9 @@
       <if test="record.avatar != null" >
         avatar = #{record.avatar,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,7 +201,8 @@
       password = #{record.password,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
       phone = #{record.phone,jdbcType=VARCHAR},
-      avatar = #{record.avatar,jdbcType=VARCHAR}
+      avatar = #{record.avatar,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -214,6 +225,9 @@
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
     </set>
     where userId = #{userid,jdbcType=INTEGER}
   </update>
@@ -223,7 +237,23 @@
       password = #{password,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       phone = #{phone,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR}
+      avatar = #{avatar,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
     where userId = #{userid,jdbcType=INTEGER}
   </update>
+  <select resultMap="BaseResultMap" parameterType="com.example.demo.entity.UserDOExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from comp_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

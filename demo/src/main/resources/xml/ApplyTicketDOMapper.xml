@@ -3,20 +3,22 @@
 <mapper namespace="com.example.demo.mapper.ApplyTicketDOMapper" >
   <resultMap id="BaseResultMap" type="com.example.demo.entity.ApplyTicketDO" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="applicantId" property="applicantid" jdbcType="INTEGER" />
+    <result column="applicant_id" property="applicantId" jdbcType="INTEGER" />
     <result column="applicant" property="applicant" jdbcType="VARCHAR" />
-    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
-    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
-    <result column="roomId" property="roomid" jdbcType="INTEGER" />
-    <result column="roomName" property="roomname" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="room_id" property="roomId" jdbcType="INTEGER" />
+    <result column="room_name" property="roomName" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="addressTime" property="addresstime" jdbcType="TIMESTAMP" />
-    <result column="modifiedTime" property="modifiedtime" jdbcType="TIMESTAMP" />
-    <result column="processorId" property="processorid" jdbcType="INTEGER" />
-    <result column="processorName" property="processorname" jdbcType="VARCHAR" />
-    <result column="applyreason" property="applyreason" jdbcType="VARCHAR" />
-    <result column="refusereason" property="refusereason" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="address_time" property="addressTime" jdbcType="TIMESTAMP" />
+    <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP" />
+    <result column="processor_id" property="processorId" jdbcType="INTEGER" />
+    <result column="processor_name" property="processorName" jdbcType="VARCHAR" />
+    <result column="teacher" property="teacher" jdbcType="VARCHAR" />
+    <result column="lesson" property="lesson" jdbcType="VARCHAR" />
+    <result column="class_hour" property="classHour" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,8 +79,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, applicantId, applicant, startTime, endTime, roomId, roomName, status, createTime, 
-    addressTime, modifiedTime, processorId, processorName, applyreason, refusereason
+    id, applicant_id, applicant, start_time, end_time, room_id, room_name, status, create_time, 
+    address_time, modified_time, processor_id, processor_name, teacher, lesson, class_hour, 
+    content
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.entity.ApplyTicketDOExample" >
     select
@@ -111,114 +114,126 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.entity.ApplyTicketDO" >
-    insert into comp_applyticket (id, applicantId, applicant, 
-      startTime, endTime, roomId, 
-      roomName, status, createTime, 
-      addressTime, modifiedTime, processorId, 
-      processorName, applyreason, refusereason
-      )
-    values (#{id,jdbcType=INTEGER}, #{applicantid,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, 
-      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{roomid,jdbcType=INTEGER}, 
-      #{roomname,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{addresstime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, #{processorid,jdbcType=INTEGER}, 
-      #{processorname,jdbcType=VARCHAR}, #{applyreason,jdbcType=VARCHAR}, #{refusereason,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.example.demo.entity.ApplyTicketDO">
+    insert into comp_applyticket (id, applicant_id, applicant, 
+      start_time, end_time, room_id, 
+      room_name, status, create_time, 
+      address_time, modified_time, processor_id, 
+      processor_name, teacher, lesson, 
+      class_hour, content)
+    values (#{id,jdbcType=INTEGER}, #{applicantId,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{roomId,jdbcType=INTEGER}, 
+      #{roomName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{addressTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, #{processorId,jdbcType=INTEGER}, 
+      #{processorName,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR}, #{lesson,jdbcType=VARCHAR}, 
+      #{classHour,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.entity.ApplyTicketDO" >
+  <insert id="insertSelective" parameterType="com.example.demo.entity.ApplyTicketDO" useGeneratedKeys="true" keyProperty="id">
     insert into comp_applyticket
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="applicantid != null" >
-        applicantId,
+      <if test="applicantId != null" >
+        applicant_id,
       </if>
       <if test="applicant != null" >
         applicant,
       </if>
-      <if test="starttime != null" >
-        startTime,
+      <if test="startTime != null" >
+        start_time,
       </if>
-      <if test="endtime != null" >
-        endTime,
+      <if test="endTime != null" >
+        end_time,
       </if>
-      <if test="roomid != null" >
-        roomId,
+      <if test="roomId != null" >
+        room_id,
       </if>
-      <if test="roomname != null" >
-        roomName,
+      <if test="roomName != null" >
+        room_name,
       </if>
       <if test="status != null" >
         status,
       </if>
-      <if test="createtime != null" >
-        createTime,
+      <if test="createTime != null" >
+        create_time,
       </if>
-      <if test="addresstime != null" >
-        addressTime,
+      <if test="addressTime != null" >
+        address_time,
       </if>
-      <if test="modifiedtime != null" >
-        modifiedTime,
+      <if test="modifiedTime != null" >
+        modified_time,
       </if>
-      <if test="processorid != null" >
-        processorId,
+      <if test="processorId != null" >
+        processor_id,
       </if>
-      <if test="processorname != null" >
-        processorName,
+      <if test="processorName != null" >
+        processor_name,
       </if>
-      <if test="applyreason != null" >
-        applyreason,
+      <if test="teacher != null" >
+        teacher,
       </if>
-      <if test="refusereason != null" >
-        refusereason,
+      <if test="lesson != null" >
+        lesson,
+      </if>
+      <if test="classHour != null" >
+        class_hour,
+      </if>
+      <if test="content != null" >
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="applicantid != null" >
-        #{applicantid,jdbcType=INTEGER},
+      <if test="applicantId != null" >
+        #{applicantId,jdbcType=INTEGER},
       </if>
       <if test="applicant != null" >
         #{applicant,jdbcType=VARCHAR},
       </if>
-      <if test="starttime != null" >
-        #{starttime,jdbcType=TIMESTAMP},
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endtime != null" >
-        #{endtime,jdbcType=TIMESTAMP},
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="roomid != null" >
-        #{roomid,jdbcType=INTEGER},
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
       </if>
-      <if test="roomname != null" >
-        #{roomname,jdbcType=VARCHAR},
+      <if test="roomName != null" >
+        #{roomName,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="addresstime != null" >
-        #{addresstime,jdbcType=TIMESTAMP},
+      <if test="addressTime != null" >
+        #{addressTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifiedtime != null" >
-        #{modifiedtime,jdbcType=TIMESTAMP},
+      <if test="modifiedTime != null" >
+        #{modifiedTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="processorid != null" >
-        #{processorid,jdbcType=INTEGER},
+      <if test="processorId != null" >
+        #{processorId,jdbcType=INTEGER},
       </if>
-      <if test="processorname != null" >
-        #{processorname,jdbcType=VARCHAR},
+      <if test="processorName != null" >
+        #{processorName,jdbcType=VARCHAR},
       </if>
-      <if test="applyreason != null" >
-        #{applyreason,jdbcType=VARCHAR},
+      <if test="teacher != null" >
+        #{teacher,jdbcType=VARCHAR},
       </if>
-      <if test="refusereason != null" >
-        #{refusereason,jdbcType=VARCHAR},
+      <if test="lesson != null" >
+        #{lesson,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -234,47 +249,53 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.applicantid != null" >
-        applicantId = #{record.applicantid,jdbcType=INTEGER},
+      <if test="record.applicantId != null" >
+        applicant_id = #{record.applicantId,jdbcType=INTEGER},
       </if>
       <if test="record.applicant != null" >
         applicant = #{record.applicant,jdbcType=VARCHAR},
       </if>
-      <if test="record.starttime != null" >
-        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.endtime != null" >
-        endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      <if test="record.endTime != null" >
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.roomid != null" >
-        roomId = #{record.roomid,jdbcType=INTEGER},
+      <if test="record.roomId != null" >
+        room_id = #{record.roomId,jdbcType=INTEGER},
       </if>
-      <if test="record.roomname != null" >
-        roomName = #{record.roomname,jdbcType=VARCHAR},
+      <if test="record.roomName != null" >
+        room_name = #{record.roomName,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.createtime != null" >
-        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.addresstime != null" >
-        addressTime = #{record.addresstime,jdbcType=TIMESTAMP},
+      <if test="record.addressTime != null" >
+        address_time = #{record.addressTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifiedtime != null" >
-        modifiedTime = #{record.modifiedtime,jdbcType=TIMESTAMP},
+      <if test="record.modifiedTime != null" >
+        modified_time = #{record.modifiedTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.processorid != null" >
-        processorId = #{record.processorid,jdbcType=INTEGER},
+      <if test="record.processorId != null" >
+        processor_id = #{record.processorId,jdbcType=INTEGER},
       </if>
-      <if test="record.processorname != null" >
-        processorName = #{record.processorname,jdbcType=VARCHAR},
+      <if test="record.processorName != null" >
+        processor_name = #{record.processorName,jdbcType=VARCHAR},
       </if>
-      <if test="record.applyreason != null" >
-        applyreason = #{record.applyreason,jdbcType=VARCHAR},
+      <if test="record.teacher != null" >
+        teacher = #{record.teacher,jdbcType=VARCHAR},
       </if>
-      <if test="record.refusereason != null" >
-        refusereason = #{record.refusereason,jdbcType=VARCHAR},
+      <if test="record.lesson != null" >
+        lesson = #{record.lesson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classHour != null" >
+        class_hour = #{record.classHour,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -284,20 +305,22 @@
   <update id="updateByExample" parameterType="map" >
     update comp_applyticket
     set id = #{record.id,jdbcType=INTEGER},
-      applicantId = #{record.applicantid,jdbcType=INTEGER},
+      applicant_id = #{record.applicantId,jdbcType=INTEGER},
       applicant = #{record.applicant,jdbcType=VARCHAR},
-      startTime = #{record.starttime,jdbcType=TIMESTAMP},
-      endTime = #{record.endtime,jdbcType=TIMESTAMP},
-      roomId = #{record.roomid,jdbcType=INTEGER},
-      roomName = #{record.roomname,jdbcType=VARCHAR},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      room_id = #{record.roomId,jdbcType=INTEGER},
+      room_name = #{record.roomName,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
-      createTime = #{record.createtime,jdbcType=TIMESTAMP},
-      addressTime = #{record.addresstime,jdbcType=TIMESTAMP},
-      modifiedTime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      processorId = #{record.processorid,jdbcType=INTEGER},
-      processorName = #{record.processorname,jdbcType=VARCHAR},
-      applyreason = #{record.applyreason,jdbcType=VARCHAR},
-      refusereason = #{record.refusereason,jdbcType=VARCHAR}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      address_time = #{record.addressTime,jdbcType=TIMESTAMP},
+      modified_time = #{record.modifiedTime,jdbcType=TIMESTAMP},
+      processor_id = #{record.processorId,jdbcType=INTEGER},
+      processor_name = #{record.processorName,jdbcType=VARCHAR},
+      teacher = #{record.teacher,jdbcType=VARCHAR},
+      lesson = #{record.lesson,jdbcType=VARCHAR},
+      class_hour = #{record.classHour,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -305,67 +328,75 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.ApplyTicketDO" >
     update comp_applyticket
     <set >
-      <if test="applicantid != null" >
-        applicantId = #{applicantid,jdbcType=INTEGER},
+      <if test="applicantId != null" >
+        applicant_id = #{applicantId,jdbcType=INTEGER},
       </if>
       <if test="applicant != null" >
         applicant = #{applicant,jdbcType=VARCHAR},
       </if>
-      <if test="starttime != null" >
-        startTime = #{starttime,jdbcType=TIMESTAMP},
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endtime != null" >
-        endTime = #{endtime,jdbcType=TIMESTAMP},
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="roomid != null" >
-        roomId = #{roomid,jdbcType=INTEGER},
+      <if test="roomId != null" >
+        room_id = #{roomId,jdbcType=INTEGER},
       </if>
-      <if test="roomname != null" >
-        roomName = #{roomname,jdbcType=VARCHAR},
+      <if test="roomName != null" >
+        room_name = #{roomName,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null" >
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="addresstime != null" >
-        addressTime = #{addresstime,jdbcType=TIMESTAMP},
+      <if test="addressTime != null" >
+        address_time = #{addressTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifiedtime != null" >
-        modifiedTime = #{modifiedtime,jdbcType=TIMESTAMP},
+      <if test="modifiedTime != null" >
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="processorid != null" >
-        processorId = #{processorid,jdbcType=INTEGER},
+      <if test="processorId != null" >
+        processor_id = #{processorId,jdbcType=INTEGER},
       </if>
-      <if test="processorname != null" >
-        processorName = #{processorname,jdbcType=VARCHAR},
+      <if test="processorName != null" >
+        processor_name = #{processorName,jdbcType=VARCHAR},
       </if>
-      <if test="applyreason != null" >
-        applyreason = #{applyreason,jdbcType=VARCHAR},
+      <if test="teacher != null" >
+        teacher = #{teacher,jdbcType=VARCHAR},
       </if>
-      <if test="refusereason != null" >
-        refusereason = #{refusereason,jdbcType=VARCHAR},
+      <if test="lesson != null" >
+        lesson = #{lesson,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        class_hour = #{classHour,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.ApplyTicketDO" >
     update comp_applyticket
-    set applicantId = #{applicantid,jdbcType=INTEGER},
+    set applicant_id = #{applicantId,jdbcType=INTEGER},
       applicant = #{applicant,jdbcType=VARCHAR},
-      startTime = #{starttime,jdbcType=TIMESTAMP},
-      endTime = #{endtime,jdbcType=TIMESTAMP},
-      roomId = #{roomid,jdbcType=INTEGER},
-      roomName = #{roomname,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      room_id = #{roomId,jdbcType=INTEGER},
+      room_name = #{roomName,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      addressTime = #{addresstime,jdbcType=TIMESTAMP},
-      modifiedTime = #{modifiedtime,jdbcType=TIMESTAMP},
-      processorId = #{processorid,jdbcType=INTEGER},
-      processorName = #{processorname,jdbcType=VARCHAR},
-      applyreason = #{applyreason,jdbcType=VARCHAR},
-      refusereason = #{refusereason,jdbcType=VARCHAR}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      address_time = #{addressTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      processor_id = #{processorId,jdbcType=INTEGER},
+      processor_name = #{processorName,jdbcType=VARCHAR},
+      teacher = #{teacher,jdbcType=VARCHAR},
+      lesson = #{lesson,jdbcType=VARCHAR},
+      class_hour = #{classHour,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select resultMap="BaseResultMap" parameterType="com.example.demo.entity.ApplyTicketDOExample" id="selectByExampleWithRowbounds" >

@@ -4,8 +4,8 @@ import lombok.Data;
 
 public enum ErrorCode {
 
-    SYSTEM_ERROR("300", "系统错误");
-
+    SYSTEM_ERROR("300", "系统错误"),
+    USER_FAIL_AUTH("400", "用户验证失败");
 
 
 
